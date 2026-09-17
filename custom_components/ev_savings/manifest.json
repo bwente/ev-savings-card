@@ -1,0 +1,21 @@
+{
+  "domain": "ev_savings",
+  "name": "EV Savings",
+  "codeowners": [
+    "@bwente"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "frontend",
+    "http",
+    "lovelace",
+    "recorder",
+    "websocket_api"
+  ],
+  "documentation": "https://github.com/bwente/ev-savings-card",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "version": "0.6.2",
+  "issue_tracker": "https://github.com/bwente/ev-savings-card/issues",
+  "integration_type": "service"
+}

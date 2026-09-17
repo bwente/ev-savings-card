@@ -1,0 +1,19 @@
+# Illustrative mapping only; verify your tariff indexes and delivered rates.
+type: custom:ev-savings-card
+title: EV Charging
+
+daily_entity: sensor.ev_energy_today
+monthly_entity: sensor.ev_energy_this_month
+rate_entity: sensor.ev_openei_tariff
+
+comparison_period: off_peak
+
+period_roles:
+  discount: 2
+  off_peak: 1
+  peak: 0
+
+rate_multiplier: 1.03586
+
+currency: USD
+decimals: 1

@@ -1,0 +1,18 @@
+{
+  "name": "ev-savings-card",
+  "version": "0.6.2",
+  "private": true,
+  "description": "Home Assistant EV charging cost and time of use savings calendar card",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node --check src/ev-savings-card.js && node --check src/calculations.js && node --check src/editor.js && node --check dist/ev-savings-card.js",
+    "test": "node --test",
+    "validate": "npm run build && npm run check && npm test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "author": "Brian Wente"
+}

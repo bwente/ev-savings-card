@@ -1,0 +1,23 @@
+name: Bug report
+description: Report an installation, display, or calculation problem.
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Card, Home Assistant, HACS, and browser versions.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: What happened?
+      description: Steps, expected behavior, actual behavior, and relevant error messages.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: Sanitized configuration and tariff details
+      description: Remove API keys, private URLs, and household identifiers before posting.
+      render: yaml

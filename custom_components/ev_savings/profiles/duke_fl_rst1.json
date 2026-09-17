@@ -1,0 +1,60 @@
+{
+  "profile": "duke_fl_rst1",
+  "versions": [
+    {
+      "id": "duke-fl-rst1-2026-09-01",
+      "name": "RST-1",
+      "utility": "Duke Energy Florida",
+      "time_zone": "America/New_York",
+      "effective_from": "2026-09-01",
+      "effective_to": null,
+      "verified": true,
+      "verified_on": "2026-09-11",
+      "review_after": "2026-10-11",
+      "schedule_kind": "duke_fl_rst1",
+      "scope": "Pre-tax variable electricity charges only. Excludes taxes, franchise fees, fixed charges and minimum-bill effects. Calendar-date estimates may differ from utility billing-month application.",
+      "source": "Duke Energy Florida: RST-1 sheet 6.140 (June 1, 2026) and BA-1 sheet 6.105 (September 1, 2026)",
+      "sources": [
+        {
+          "sheet": "6.140",
+          "url": "https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-rst-1.pdf",
+          "sha256": "b4ed14165488c95aa1a50d1d62251f8655768d807bacffca1e2518b5b0957eb6"
+        },
+        {
+          "sheet": "6.105",
+          "url": "https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-ba-1.pdf",
+          "sha256": "58c1df6cecd2783459c92f314a83120151e92b0e32c10fa2592e78bf5d8dab73"
+        }
+      ],
+      "rates": {
+        "discount": {
+          "base": "0.04984",
+          "fuel": "0.03539",
+          "eccr": "0.00386",
+          "ccr": "0.00133",
+          "ecrc": "0.00040",
+          "asc": "0.00238",
+          "sppcrc": "0.00936"
+        },
+        "off_peak": {
+          "base": "0.08215",
+          "fuel": "0.03828",
+          "eccr": "0.00386",
+          "ccr": "0.00133",
+          "ecrc": "0.00040",
+          "asc": "0.00238",
+          "sppcrc": "0.00936"
+        },
+        "peak": {
+          "base": "0.11090",
+          "fuel": "0.04395",
+          "eccr": "0.00386",
+          "ccr": "0.00133",
+          "ecrc": "0.00040",
+          "asc": "0.00238",
+          "sppcrc": "0.00936"
+        }
+      }
+    }
+  ]
+}

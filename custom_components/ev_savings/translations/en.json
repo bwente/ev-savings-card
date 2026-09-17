@@ -1,0 +1,124 @@
+{
+  "title": "EV Savings",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Choose your tariff source",
+        "description": "Enter final kWh prices manually, or choose an optional online or maintained tariff source. Manual rates are not adjusted automatically.",
+        "data": {
+          "provider": "Tariff source"
+        }
+      },
+      "utility": {
+        "title": "Find utility tariffs",
+        "description": "Enter the utility's exact OpenEI name (for example Progress Energy Florida Inc). Your API key is stored privately in Home Assistant.",
+        "data": {
+          "api_key": "OpenEI API key",
+          "utility": "Utility name"
+        }
+      },
+      "tariff": {
+        "title": "Choose tariff and period mapping",
+        "description": "Check your plan's effective date and zero-based period indexes against utility documents. Only three-period, untiered kWh plans are supported. OpenEI schedules may omit holidays or contain errors.",
+        "data": {
+          "tariff": "Tariff record",
+          "discount": "Discount period index",
+          "off_peak": "Off peak period index",
+          "peak": "On peak period index"
+        }
+      },
+      "energy": {
+        "title": "Choose charging energy",
+        "description": "Select an EV-specific kWh sensor with recorder sum statistics and a comparison period. Hourly data estimates rate-boundary timing.",
+        "data": {
+          "energy_entity": "EV energy sensor",
+          "comparison": "Comparison period"
+        }
+      },
+      "manual": {
+        "title": "Enter final rates",
+        "description": "Enter cents per kWh including the variable fees and taxes you want counted; no additional factors will be added. For example, 10.74 means $0.1074/kWh in USD. For a flat plan, enter the same value in all three fields. Initial setup can cover a known past date. Updates must start on a future date and preserve currency and time zone.",
+        "data": {
+          "utility": "Power company / source",
+          "name": "Plan name",
+          "currency": "Currency code (USD, EUR, etc.)",
+          "time_zone": "Service time zone (for example America/New_York)",
+          "effective_from": "Effective date",
+          "discount": "Discount / flat price (cents per kWh)",
+          "off_peak": "Off peak price (cents per kWh)",
+          "peak": "On peak price (cents per kWh)",
+          "schedule": "Schedule"
+        }
+      },
+      "manual_rule": {
+        "title": "Add a rate window",
+        "description": "Off peak is the default outside the windows entered. Choose calendar months (1\u201312), weekdays or weekends, and whole-hour boundaries (0 = midnight, 24 = end of day). End is exclusive. Windows may not overlap; split overnight windows in two. Custom schedules do not infer holidays. The Duke preset includes its seasonal hours and observed holidays.",
+        "data": {
+          "months": "Months",
+          "days": "Days",
+          "role": "Rate period",
+          "start": "Start hour",
+          "end": "End hour",
+          "add_another": "Add another window"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not retrieve tariffs. Check the utility name, API key and connection.",
+      "unsupported_tariff": "This tariff or period mapping is unsupported or incomplete.",
+      "invalid_energy": "Select a kWh energy sensor with total or total_increasing state class.",
+      "invalid_manual": "Check the date, prices, currency and time zone. Updated rates must start tomorrow or later, with the existing time zone and currency.",
+      "invalid_schedule": "Select months and days with nonoverlapping whole-hour windows; end must be after start."
+    },
+    "abort": {
+      "already_configured": "This energy sensor and provider are already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Charging comparison",
+        "description": "Changing the comparison or cost basis recalculates displayed summaries. Duke statewide factors can be included. Local fees require separate verification; only confirm none after checking your bill. Fixed household charges are excluded.",
+        "data": {
+          "energy_entity": "EV energy sensor",
+          "comparison": "Comparison period",
+          "cost_basis": "Cost basis",
+          "local_charges": "Local charges",
+          "update_manual": "Enter or update manual rates"
+        }
+      },
+      "manual": {
+        "title": "Enter final rates",
+        "description": "Enter cents per kWh including the variable fees and taxes you want counted; no additional factors will be added. For example, 10.74 means $0.1074/kWh in USD. For a flat plan, enter the same value in all three fields. Initial setup can cover a known past date. Updates must start on a future date and preserve currency and time zone.",
+        "data": {
+          "utility": "Power company / source",
+          "name": "Plan name",
+          "currency": "Currency code (USD, EUR, etc.)",
+          "time_zone": "Service time zone (for example America/New_York)",
+          "effective_from": "Effective date",
+          "discount": "Discount / flat price (cents per kWh)",
+          "off_peak": "Off peak price (cents per kWh)",
+          "peak": "On peak price (cents per kWh)",
+          "schedule": "Schedule"
+        }
+      },
+      "manual_rule": {
+        "title": "Add a rate window",
+        "description": "Off peak is the default outside the windows entered. Choose calendar months (1\u201312), weekdays or weekends, and whole-hour boundaries (0 = midnight, 24 = end of day). End is exclusive. Windows may not overlap; split overnight windows in two. Custom schedules do not infer holidays. The Duke preset includes its seasonal hours and observed holidays.",
+        "data": {
+          "months": "Months",
+          "days": "Days",
+          "role": "Rate period",
+          "start": "Start hour",
+          "end": "End hour",
+          "add_another": "Add another window"
+        }
+      }
+    },
+    "error": {
+      "invalid_energy": "Select a kWh energy sensor with total or total_increasing state class.",
+      "invalid_manual": "Check the date, prices, currency and time zone. Updated rates must start tomorrow or later, with the existing time zone and currency.",
+      "invalid_schedule": "Select months and days with nonoverlapping whole-hour windows; end must be after start."
+    }
+  }
+}
