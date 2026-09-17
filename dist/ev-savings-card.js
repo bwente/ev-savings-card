@@ -263,7 +263,7 @@ if (!customElements.get("ev-savings-card-editor")) customElements.define("ev-sav
 
 
 class EvSavingsCard extends HTMLElement {
-  static VERSION = "0.6.2";
+  static VERSION = "0.6.3";
 
   static getStubConfig(hass) {
     const entity = Object.values(hass?.states || {}).find(state => state.attributes?.ev_savings_entry_id);
@@ -335,8 +335,6 @@ class EvSavingsCard extends HTMLElement {
     if (key !== this._loadedKey) {
       this._loadedKey = key;
       this.loadData();
-    } else {
-      this.render();
     }
   }
 
@@ -616,6 +614,10 @@ class EvSavingsCard extends HTMLElement {
   render() {
     if (!this.config) return;
 
+    // Read the live disclosure state before replacing the DOM. Keep it while
+    // loading too, when the notes element is temporarily absent.
+    const notes = this.shadowRoot.querySelector(".data-notes");
+    if (notes) this._notesOpen = notes.open;
     const d = this._data;
     const title = this.config.title || "EV Savings";
 
@@ -1122,7 +1124,7 @@ class EvSavingsCard extends HTMLElement {
         <span>${this.escape(d.tariff.utility)} ${this.escape(d.tariff.name)}${effectiveDate ? ` · ${this.escape(effectiveDate)}` : ""}</span>
         <span>${basisLabel} · v${EvSavingsCard.VERSION}</span>
       </div>
-      <details class="data-notes">
+      <details class="data-notes"${this._notesOpen ? " open" : ""}>
         <summary>${notices.length ? this.escape(notices.join(" · ")) : "Rate & data details"}</summary>
         <p>Source: ${this.escape(d.tariff.source)}</p>
         <p>${[...new Set([...d.warnings, d.integration ? d.tariff.scope : ""])].filter(Boolean).map(w => this.escape(w)).join(" ")}</p>

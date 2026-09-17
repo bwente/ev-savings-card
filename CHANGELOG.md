@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.3 — Unreleased
+
+- Keep expanded rate and data notes open across card refreshes.
+- Avoid redrawing the card for unrelated Home Assistant state updates.
+
 ## 0.6.2 — Unreleased
 
 - Register the bundled card as a Lovelace module resource, updating older integration resource URLs on startup.

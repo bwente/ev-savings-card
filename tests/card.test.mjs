@@ -184,3 +184,37 @@ test("day details expose both rate portions and accessible day controls", () => 
   assert.match(html,/\$1.07/);assert.match(html,/\$1.43/);
   assert.match(html,/split-discount/);assert.match(html,/split-off_peak/);
 });
+
+test("unrelated HA updates leave the existing card DOM alone", () => {
+  const c = card();
+  let loads = 0, renders = 0;
+  c.loadData = () => { loads++; };
+  c.render = () => { renders++; };
+  c.hass = c._hass;
+  assert.equal(loads, 1);
+  c.hass = { ...c._hass, states: { ...c._hass.states, 'sensor.unrelated': { state: 'changed' } } };
+  assert.equal(loads, 1);
+  assert.equal(renders, 0);
+  c.hass = { ...c._hass, states: { ...c._hass.states, 'sensor.ev': { ...c._hass.states['sensor.ev'], state: '101' } } };
+  assert.equal(loads, 2);
+});
+
+test("data notes preserve open and closed state across view changes and loading", () => {
+  const c = card();
+  const data = c.buildData([row(-1, 0), row(0, 1)], start, end);
+  c._data = data;
+  let notes = { open: true };
+  c.shadowRoot.querySelector = selector => selector === '.data-notes' ? notes : null;
+  c.setView('savings');
+  assert.match(c.shadowRoot.innerHTML, /<details class="data-notes" open>/);
+  c._data = null;
+  c.render();
+  notes = null;
+  c._data = data;
+  c.render();
+  assert.match(c.shadowRoot.innerHTML, /<details class="data-notes" open>/);
+  notes = { open: false };
+  c.setView('cost');
+  assert.match(c.shadowRoot.innerHTML, /<details class="data-notes">/);
+  assert.ok(!/<details[^>]*\bopen\b/.test(c.shadowRoot.innerHTML));
+});

@@ -12,7 +12,7 @@ For an existing installation, open **EV Savings → Configure**, select **Enter 
 
 Tap a calendar day to expand its charging details. A colored bar and table show each consecutive rate portion with its time window, kWh, applied price, and cost. For example, 10 kWh at $0.1074 plus 10 kWh at $0.1428 costs $2.502 before display rounding. These are **hourly charging intervals**, not exact charger session start/stop records. A charge crossing midnight appears in both days' details. Missing intervals remain excluded and flagged.
 
-Update the integration folder and restart Home Assistant. If using a manual dashboard resource, change it to `/ev_savings/ev-savings-card.js?v=0.6.2` and refresh the browser.
+Update the integration folder and restart Home Assistant. If using a manual dashboard resource, change it to `/ev_savings/ev-savings-card.js?v=0.6.3` and refresh the browser.
 
 ## Layout and cost basis
 
@@ -22,11 +22,11 @@ For an existing Duke installation, open **EV Savings → Configure → Cost basi
 
 Local taxes and franchise fees remain unconfirmed until checked against your bill. Only select **My bill has no local taxes or franchise fees** if that is true. Location-specific calculation rules are not implemented yet; the card identifies these fees as excluded rather than implying an all-in total. Fixed household charges and minimum-bill effects remain outside EV scheduling savings.
 
-To update manually, replace `/config/custom_components/ev_savings` with the new package, restart HA and refresh the browser. If you previously added a manual card resource, update its URL to `/ev_savings/ev-savings-card.js?v=0.6.2`.
+To update manually, replace `/config/custom_components/ev_savings` with the new package, restart HA and refresh the browser. If you previously added a manual card resource, update its URL to `/ev_savings/ev-savings-card.js?v=0.6.3`.
 
 ## Status and compatibility
 
-Version 0.6.2 includes the companion integration and bundled dashboard card. This is an early public beta, not yet included in the default HACS catalog. Python adapters and calculation tests run against Home Assistant 2026.6.0. Card loading has been confirmed on a live installation; a clean HACS installation test and broader compatibility testing remain pending.
+Version 0.6.3 includes the companion integration and bundled dashboard card. This is an early public beta, not yet included in the default HACS catalog. Python adapters and calculation tests run against Home Assistant 2026.6.0. Card loading has been confirmed on a live installation; a clean HACS installation test and broader compatibility testing remain pending.
 
 The integration calculates in the service location's time zone, including daylight saving time. The legacy standalone card still requires the browser and Home Assistant to use the same time zone.
 
@@ -51,7 +51,7 @@ The integration registers its bundled card as a dashboard JavaScript module auto
 If your Lovelace resources are managed in YAML, add this to the `lovelace.resources` list in your configuration and update the version when upgrading:
 
 ```yaml
-- url: /ev_savings/ev-savings-card.js?v=0.6.2
+- url: /ev_savings/ev-savings-card.js?v=0.6.3
   type: module
 ```
 

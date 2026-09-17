@@ -1,6 +1,6 @@
 {
   "name": "ev-savings-card",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "private": true,
   "description": "Home Assistant EV charging cost and time of use savings calendar card",
   "type": "module",
