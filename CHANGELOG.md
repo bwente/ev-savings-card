@@ -2,6 +2,8 @@
 
 ## 0.6.3 — Unreleased
 
+- Add Duke RST-1 rates effective October 1, 2026 with reviewed source hashes; retain September prices and revision safeguards.
+
 - Keep expanded rate and data notes open across card refreshes.
 - Avoid redrawing the card for unrelated Home Assistant state updates.
 

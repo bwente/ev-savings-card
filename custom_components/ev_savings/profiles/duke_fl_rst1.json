@@ -55,6 +55,61 @@
           "sppcrc": "0.00936"
         }
       }
+    },
+    {
+      "id": "duke-fl-rst1-2026-10-01",
+      "name": "RST-1",
+      "utility": "Duke Energy Florida",
+      "time_zone": "America/New_York",
+      "effective_from": "2026-10-01",
+      "effective_to": null,
+      "verified": true,
+      "verified_on": "2026-10-05",
+      "review_after": "2026-11-05",
+      "schedule_kind": "duke_fl_rst1",
+      "scope": "Pre-tax variable electricity charges only. Excludes taxes, franchise fees, fixed charges and minimum-bill effects. Calendar-date estimates may differ from utility billing-month application.",
+      "source": "Duke Energy Florida: RST-1 sheet 6.140 (October 1, 2026) and BA-1 sheet 6.105 (October 1, 2026)",
+      "sources": [
+        {
+          "sheet": "6.140",
+          "url": "https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-rst-1.pdf",
+          "sha256": "1f9745aebc031b443b114be2d7f41c23ebd6f0ecaa3312f6758e84a25e2c955b"
+        },
+        {
+          "sheet": "6.105",
+          "url": "https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-ba-1.pdf",
+          "sha256": "a5567a1eb63aebc7e71f2c201f34a9ce0e3861133b2b5d120f0f34acffe73455"
+        }
+      ],
+      "rates": {
+        "discount": {
+          "base": "0.05013",
+          "fuel": "0.04055",
+          "eccr": "0.00386",
+          "ccr": "0.00133",
+          "ecrc": "0.00040",
+          "asc": "0.00238",
+          "sppcrc": "0.00936"
+        },
+        "off_peak": {
+          "base": "0.08263",
+          "fuel": "0.04387",
+          "eccr": "0.00386",
+          "ccr": "0.00133",
+          "ecrc": "0.00040",
+          "asc": "0.00238",
+          "sppcrc": "0.00936"
+        },
+        "peak": {
+          "base": "0.11155",
+          "fuel": "0.05037",
+          "eccr": "0.00386",
+          "ccr": "0.00133",
+          "ecrc": "0.00040",
+          "asc": "0.00238",
+          "sppcrc": "0.00936"
+        }
+      }
     }
   ]
 }

@@ -1,13 +1,21 @@
 # Verified Duke Florida RST-1 profile
 
-Reviewed September 11, 2026. This profile estimates variable electricity charges before taxes. It does not reproduce a complete utility bill.
+Latest review October 5, 2026; September snapshot retained unchanged. This profile estimates variable electricity charges before taxes. It does not reproduce a complete utility bill.
 
 ## Primary sources
 
-- [Duke RST-1 tariff](https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-rst-1.pdf): sheet 6.140, 40th revision, effective June 1, 2026; schedule exceptions on sheet 6.141.
-- [Duke billing adjustments BA-1](https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-ba-1.pdf): sheet 6.105, 114th revision, effective September 1, 2026.
+- [Duke RST-1 tariff](https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-rst-1.pdf): sheet 6.140, 41st revision, effective October 1, 2026; seasonal and holiday rules unchanged. Sheet 6.141 remains effective January 1, 2025.
+- [Duke billing adjustments BA-1](https://www.duke-energy.com/-/media/pdfs/for-your-home/rates/rates-fl/pe-rates-ba-1.pdf): sheet 6.105, 115th revision, effective October 1, 2026. Sheets 6.106 and 6.107 remain unchanged.
 
 The profile records SHA-256 hashes of the exact PDFs reviewed. These URLs are mutable; the scheduled source check fails if a PDF changes. A document hash change requires review, not an automatic numerical update.
+
+## October 2026 update
+
+The source monitor correctly detected changes to both PDFs. Reviewed RST-1 base prices are 5.013 / 8.263 / 11.155 cents per kWh (discount / off peak / peak); BA-1 secondary fuel factors are 4.055 / 4.387 / 5.037 cents. Other residential recovery factors remain unchanged at a combined 1.733 cents. Pre-tax totals are **10.801 / 14.383 / 17.925 cents per kWh**. The customer charge changed to $14.43 but remains excluded from charging-time savings.
+
+A new immutable version starts October 1. The September version's data and hashes are preserved; date selection chooses the newer version from October when both are accepted. Existing installations that first receive this update after October 1 will retain October as pending under the existing backdated-update safeguard. This maintenance change does not automatically approve pending revisions or reprice saved history. Fresh installations load both versions.
+
+The latest version's review deadline is November 5, 2026. The online source check compares the newest version's hashes with the current utility PDFs; old snapshots deliberately retain hashes of their historical documents.
 
 ## September 2026 price components
 

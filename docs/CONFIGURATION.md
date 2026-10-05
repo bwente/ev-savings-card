@@ -68,7 +68,7 @@ Use the actual entity ID created by your installation. Change the energy sensor 
 
 ### Rates and updates
 
-The maintained Duke profile covers **September 1, 2026 onward** with source-only, pre-tax variable prices of **$0.10256 / $0.13776 / $0.17218 per kWh** for discount / off peak / on peak. It includes seasonal schedules, weekends and the tariff's six named holidays with observed dates. These source-only figures exclude taxes, franchise fees, fixed charges and minimum-bill effects. The optional statewide-inclusive cost basis is described above. Calendar-date pricing may differ from utility billing-month application.
+The maintained Duke profile contains dated versions: **September 2026** source-only prices of **$0.10256 / $0.13776 / $0.17218 per kWh**, and **October 1, 2026 onward** prices of **$0.10801 / $0.14383 / $0.17925 per kWh** for discount / off peak / on peak. It includes seasonal schedules, weekends and the tariff's six named holidays with observed dates. These source-only figures exclude taxes, franchise fees, fixed charges and minimum-bill effects. The optional statewide-inclusive cost basis is described above. Calendar-date pricing may differ from utility billing-month application.
 
 These are verified against the dated Duke sheets, not inferred from Emporia's rounded display. Earlier months produce an unavailable-history error. See [verified tariff provenance](VERIFIED-TARIFFS.md).
 

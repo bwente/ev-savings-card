@@ -124,3 +124,25 @@ def test_total_billing_does_not_assume_other_utilities_share_duke_taxes():
     with pytest.raises(TariffError, match='not yet defined'):
         billed_price(other, 'discount', {'cost_basis':'total'})
     assert billed_price(other,'discount',{'cost_basis':'energy'}) == Decimal('.10256')
+
+
+def test_october_duke_revision_prices_and_local_effective_boundary():
+    versions = json.loads(Path('custom_components/ev_savings/profiles/duke_fl_rst1.json').read_text())['versions']
+    october = version_at(versions, '2026-10-01T00:00:00-04:00')
+    assert october['id'] == 'duke-fl-rst1-2026-10-01'
+    assert [price(october, role) for role in ('discount', 'off_peak', 'peak')] == [Decimal('.10801'), Decimal('.14383'), Decimal('.17925')]
+    september = version_at(versions, '2026-10-01T03:59:59Z')
+    assert september['id'] == 'duke-fl-rst1-2026-09-01'
+    assert price(september, 'discount') == Decimal('.10256')
+    start, _ = month_bounds(2026, 10, 'America/New_York')
+    result = calculate_month(rows_for(start, 1), versions, 2026, 10, 'America/New_York', now=start+timedelta(hours=1))
+    assert result['totals']['actualCost'] == pytest.approx(.10801)
+    assert result['totals']['savings'] == pytest.approx(.14383 - .10801)
+
+
+def test_late_october_profile_keeps_existing_snapshot_and_requires_review():
+    versions = json.loads(Path('custom_components/ev_savings/profiles/duke_fl_rst1.json').read_text())['versions']
+    original = deepcopy(versions[0])
+    accepted, pending = merge_versions([original], versions, '2026-10-05')
+    assert accepted == [original]
+    assert [v['id'] for v in pending] == ['duke-fl-rst1-2026-10-01']

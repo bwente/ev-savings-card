@@ -37,9 +37,10 @@ async def test_cache_reload_and_status_do_not_expose_credentials():
     cache.warning, cache.last_checked = None, None
     entry.runtime_data = cache
     await cache.refresh()
-    assert len(cache.versions) == 1 and cache.warning is None
+    assert {v['id'] for v in cache.versions} == {'duke-fl-rst1-2026-09-01', 'duke-fl-rst1-2026-10-01'}
+    assert cache.warning is None
     await cache.refresh()
-    assert len(cache.versions) == 1 and not cache.pending
+    assert len(cache.versions) == 2 and not cache.pending
     assert 'must-not-leak' not in str(TariffSensor(entry).extra_state_attributes)
     assert cache.store.async_save.await_count == 2
 
@@ -69,6 +70,12 @@ async def test_websocket_uses_recorder_and_backend_prices(monkeypatch):
         start = job.args[1]
         from datetime import timedelta
         return {'sensor.ev':[{'start':start,'sum':0},{'start':start+timedelta(hours=1),'sum':10}]}
+    from datetime import datetime
+    class SeptemberClock(datetime):
+        @classmethod
+        def now(cls, tz=None):
+            return cls(2026, 9, 11, 12, tzinfo=tz)
+    monkeypatch.setattr(integration, 'datetime', SeptemberClock)
     monkeypatch.setattr(integration,'get_instance',lambda _:SimpleNamespace(async_add_executor_job=executor))
     connection = SimpleNamespace(user=SimpleNamespace(permissions=SimpleNamespace(check_entity=lambda *_:True)),send_result=Mock(),send_error=Mock())
     await unwrap(websocket_month)(hass, connection, {'id':1,'entry_id':'entry','month_offset':0})
